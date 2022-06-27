@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body >
+    <style> .logs {
+ background-color:yellow;
+    }
+     
+    </style>
+    <div class="logs">
+    <!--div x-data="Login" x-init="init()" -->
+    <div id="app"></div>
+    <button @click="logout()" class="btn btn-primary" x-show="logoutBtn">Logout</button>
+  
+  <p id="snackbar" class="error" x-ref="errorMessage" x-show="errorMessage"></p>
+  <p id="snackbar" class="success" x-ref="successMessage" x-show="successMessage"></p>
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="container">
+      <div x-show="loginInput">
+        <div class="d-flex justify-content-center">
+         
+        </div>
+        <form class="row g-3 d-flex justify-content-center">
+
+          <div x-show="registerInput">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+              <h3>Register</h3>
+            </div>
+            <form class="row g-3 d-flex justify-content-center">
+              <div class="col-auto">
+                <label for="staticEmail1" class="visually-hidden">First name</label>
+                <input type="text" x-model="firstname" class="form-control" id="staticEmail1" placeholder="firstname">
+              </div>
+              <div class="col-auto">
+                <label for="staticEmail1" class="visually-hidden">Last name</label>
+                <input type="text" x-model="lastname" class="form-control" id="staticEmail1" placeholder="lastname">
+              </div>
+              <div class="col-auto">
+                <label for="staticEmail1" class="visually-hidden">Username</label>
+                <input type="text" x-model="username" class="form-control" id="staticEmail1" placeholder="Username">
+              </div>
+              <div class="col-auto">
+                <label for="inputPassword1" class="visually-hidden">Password</label>
+                <input type="password" x-model="password" class="form-control" id="inputPassword1" placeholder="Password">
+              </div>
+             
+
+              <div class="col-auto">
+                <br>
+                <div class="d-flex justify-content-center">
+                  <button @click="register()" x-bind:disabled="!username || !password" type="submit"
+                    class="btn btn-primary mb-3">Register</button>
+                </div>
+                </div>
+                <h6 @click="hideLogin()" class="link-primary d-flex justify-content-center"><a>Already registed?Login here</a></h6>
+              <h2>Login</h2>
+          <div class="col-auto">
+            <label for="staticEmail2" class="visually-hidden">Username</label>
+            <input type="text" x-model="loginUsername" class="form-control" id="staticEmail2" placeholder="Username">
+          </div>
+          <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">Password</label>
+            <input type="password" x-model="loginPassword" class="form-control" id="inputPassword2"
+              placeholder="Password">
+          </div>
+        </form>
+        <div class="col-auto">
+          <br>
+          <div class="d-flex justify-content-center">
+            <button @click="login()" x-bind:disabled="!loginUsername || !loginPassword" type="submit"
+              class="btn btn-primary mb-3">Login</button>
+          </div>
+          
+        </div>
+      </div>
+      
+        </form>
+       
+         <a><h6 @click="hideRegister()" class="link-primary d-flex justify-content-center">Not yet registered?click here</h6></a>
+        </div>
+      </div>
+    
+  </div>
+</div>
+  <!--/div-->
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
