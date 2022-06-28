@@ -1,6 +1,7 @@
 import './style.css'
 import Alpine from 'alpinejs';
 import './login';
+import './app';
 
 window.Alpine = Alpine
 //Alpine.data('login', Login);
