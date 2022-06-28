@@ -4,7 +4,7 @@ const flash = require("express-flash");
 //const axios = require('axios')
 const cors = require('cors');
 const PgPromise = require('pg-promise');
-//const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
 const initOptions = {/* initialization options */};

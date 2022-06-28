@@ -1,25 +1,57 @@
 module.exports = function (app, db) {
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+
 
 	const saltRounds = 10;
     async function getUserByUsername(username) {
 		return await db.oneOrNone(`SELECT * from users WHERE username = $1`, [username]);
 	}
-    app.get("users/register",  (req, res) => {
-        res.render("register");
-   });
+    function verifyToken(req, res, next) {
+		const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
+		if (!req.headers.authorization || !token) {
+			res.sendStatus(401);
+			return;
+		}
+		try {
+			const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+			const { username } = decoded;
+
+			if (username) {
+				next();
+			} else {
+				res.status(403).json({
+					message: 'unauthorized'
+				});
+			}
+		} catch (err) {
+			if (err && 500) {
+				res.json({
+					message: 'expired'
+				})
+			}
+			next()
+
+
+		}
+
+	}
+    
+    //app.get("users/register",  (req, res) => {
+       // res.render("register");
+   //});
    
    
-     app.get("users/login",  (req, res) => {
+    // app.get("users/login",  (req, res) => {
        // flash sets a messages variable. passport sets the error message
        //console.log(req.session.flash.error);
-       res.render("login");
-     });
+       //res.render("login");
+    // });
      
-     app.get("/users/home", (req, res) => {
+    // app.get("/users/home", (req, res) => {
        //console.log(req.isAuthenticated());
-       res.render("home", { user:req.user.name });
-     });
+      // res.render("home", { user:req.user.name });
+    // });
      //app.get("/users/logout", (req, res) => {
        //req.logout();
      //res.render("index", { message: "You have logged out successfully" });
@@ -87,7 +119,7 @@ const bcrypt = require('bcrypt');
     //  }
 //});
 
-app.post('/users/register', async function (req, res, next) {
+app.post('/users/register', verifyToken, async function (req, res, next) {
     const { firstname } = req.body;
     const { lastname } = req.body;
     const { username } = req.body;
@@ -113,16 +145,16 @@ app.post('/users/register', async function (req, res, next) {
 
 })
 
-app.post('/users/login', async function (req, res, next) {
+app.post('/users/login',verifyToken, async function (req, res, next) {
     const { username } = req.body;
     const { password } = req.body;
-    //const token = jwt.sign({
-        //username
-    //}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '4hr' });
+    const token = jwt.sign({
+        username
+    }, process.env.ACCESS_TOKEN_SECRET);
     let checkUser = await db.manyOrNone(`SELECT id from users WHERE username = $1`, [username]);
     if (checkUser.length < 1) {
         res.json({
-           // token,
+            token,
             message: 'username not registered'
         });
     } else {
@@ -133,13 +165,13 @@ app.post('/users/login', async function (req, res, next) {
 
         if (match) {
             res.json({
-                //token,
-                message: 'success'
+                token,
+                message: 'correct password'
             });
         } else {
             res.json({
-               // token,
-                message: 'unmatched'
+                token,
+                message: 'incorrect password'
             
             })
         
