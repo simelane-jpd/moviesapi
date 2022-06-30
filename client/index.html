@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
-  <body >
-    
-    <div class="logs">
+ <body>
+  
+ 
+  <div class="logs">
     <!--div x-data="Login" x-init="init()" -->
   
     <button @click="logout()" class="btn btn-primary" x-show="logoutBtn">Logout</button>
@@ -84,7 +86,6 @@
     
   </div>
 </div>
-  <!--/div-->
 
   <div class="search">
     <input type="text" placeholder="Search Movie...">
@@ -111,9 +112,10 @@
         </div-->
     </div>
 </div>
-<div class="movies-container trending">
+
+<!--div class="movies-container trending">
     <h1>Favorites</h1>
-    <div class="movies-grid">
+    <div class="movies-grid"-->
         <!--div class="card" data-id="123456">
             <div class="img">
                 <img src="https://unsplash.it/500/1000" alt="">
@@ -130,8 +132,8 @@
                 </div>
             </div>
         </div--> 
-    </div>
-</div>
+    <!--/div-->
+
 
 
 <div class="popup-container"></div>
@@ -191,5 +193,6 @@
 </div> -->
 <script src="app.js" defer></script>
     <script type="module" src="/main.js"></script>
+    <script src="login.js" defer></script>
   </body>
 </html>

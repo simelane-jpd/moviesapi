@@ -16,22 +16,22 @@ export function Login() {
     mainContent: false,
     errorMessage: false,
     successMessage: false,
-   // init() {
-        //if (localStorage.getItem('token') && localStorage.getItem('username')) {
-          //this.registerInput = false
-          //this.loginInput = false
-          //this.mainContent = true
-          //this.logoutBtn = true
-          //axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
-          //const username = localStorage.getItem('username')
-          //axios
-          //  .get(`${URL_BASE}/users/login/${username}`, { withCredentials: true, })
-           // .then((result) => {
-           //   this.heartsCount = result.data.data
-           // });
+    init() {
+        if (localStorage.getItem('token') && localStorage.getItem('username')) {
+          this.registerInput = false
+          this.loginInput = false
+          this.mainContent = true
+          this.logoutBtn = true
+          axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+          const username = localStorage.getItem('username')
+          axios
+            .get(`${URL_BASE}/users/login/${username}`, { withCredentials: true, })
+            .then((result) => {
+              this.heartsCount = result.data.data
+            });
           
-  
-       // },
+          }
+        },
       
       logout() {
         localStorage.clear()
@@ -82,7 +82,7 @@ export function Login() {
       },
       login() {
         this.user = localStorage.getItem('username')
-       // axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
         axios
           .post(`${URL_BASE}/users/login`, { username: this.loginUsername, password: this.loginPassword })
           .then((result) => {
@@ -98,9 +98,9 @@ export function Login() {
               this.loginPassword = ''
             } else {
               localStorage.setItem('username', this.loginUsername);
-             // const { token } = result.data;
-             // localStorage.setItem('token', token);
-             // axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+              const { token } = result.data;
+              localStorage.setItem('token', token);
+              axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
   
               const results = result.data
               if (results.message == 'success') {
