@@ -11,10 +11,10 @@
  <body>
   
  
-  <div class="logs">
+  <!--div class="logs"-->
     <!--div x-data="Login" x-init="init()"-->
   
-    <button @click="logout()" class="btn btn-primary" x-show="logoutBtn">Logout</button>
+    <!--button @click="logout()" class="btn btn-primary" x-show="logoutBtn">Logout</button>
   
   <p id="snackbar" class="error" x-ref="errorMessage" x-show="errorMessage"></p>
   <p id="snackbar" class="success" x-ref="successMessage" x-show="successMessage"></p>
@@ -85,7 +85,7 @@
       </div>
     
   </div>
-</div>
+</div-->
 
 
 
@@ -116,10 +116,10 @@
     </div>
 </div>
 
-<!--div class="movies-container trending">
-    <h1>Favorites</h1>
-    <div class="movies-grid"-->
-        <!--div class="card" data-id="123456">
+<div class="movies-container trending">
+    <h1>Trending</h1>
+    <div class="movies-grid">
+        <div class="card" data-id="123456">
             <div class="img">
                 <img src="https://unsplash.it/500/1000" alt="">
             </div>
@@ -134,9 +134,9 @@
                     <span>10-04-2022</span>
                 </div>
             </div>
-        </div--> 
-    <!--/div-->
-
+          </div> 
+    </div>
+</div>
 
 
 <div class="popup-container"></div>
@@ -194,8 +194,9 @@
         </div>
     </div>
 </div> -->
-<script src="app.js" defer></script>
+<!--script src="app.js" defer></script>
+    
+    <script src="login.js" defer></script-->
     <script type="module" src="/main.js"></script>
-    <script src="login.js" defer></script>
   </body>
 </html>

@@ -119,7 +119,7 @@ const jwt = require('jsonwebtoken')
     //  }
 //});
 
-app.post('/users/register', verifyToken, async function (req, res, next) {
+app.post('/api/register', verifyToken, async function (req, res, next) {
     const { firstname } = req.body;
     const { lastname } = req.body;
     const { username } = req.body;
@@ -145,7 +145,7 @@ app.post('/users/register', verifyToken, async function (req, res, next) {
 
 })
 
-app.post('/users/login',verifyToken, async function (req, res, next) {
+app.post('/api/login',verifyToken, async function (req, res, next) {
     const { username } = req.body;
     const { password } = req.body;
     const token = jwt.sign({

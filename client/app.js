@@ -1,8 +1,7 @@
 const API_KEY = `561e27716faf4339294fd5a9d6f7754e`
 const image_path = `https://image.tmdb.org/t/p/w1280`
 
-// - API key will only be available for this video since I'll delete it right after that but you can go to https://www.themoviedb.org/ , create an account and get a key for free.
-// - Image path is only the base url from where we'll get the images.
+
 
 const input = document.querySelector('.search input')
 const btn = document.querySelector('.search button')
