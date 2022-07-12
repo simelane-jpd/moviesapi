@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/moviesapi/assets/favicon.17e50649.svg" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/moviesapi/assets/index.5a0338e8.js"></script>
+    <link rel="stylesheet" href="/moviesapi/assets/index.9acf571e.css">
+  </head>
+ <body>
+  
+ 
+  <!--div class="logs"-->
+    <!--div x-data="Login" x-init="init()"-->
+  
+    <!--button @click="logout()" class="btn btn-primary" x-show="logoutBtn">Logout</button>
+  
+  <p id="snackbar" class="error" x-ref="errorMessage" x-show="errorMessage"></p>
+  <p id="snackbar" class="success" x-ref="successMessage" x-show="successMessage"></p>
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="container">
+      <div x-show="loginInput">
+        <div class="d-flex justify-content-center">
+         
+        </div>
+        <form class="row g-3 d-flex justify-content-center">
+
+          <div x-show="registerInput">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+              <h3>Register</h3>
+            </div>
+            <form class="row g-3 d-flex justify-content-center">
+              <div class="col-auto">
+                <label for="staticEmail1" class="visually-hidden">First name</label>
+                <input type="text" x-model="firstname" class="form-control" id="staticEmail1" placeholder="firstname">
+              </div>
+              <div class="col-auto">
+                <label for="staticEmail1" class="visually-hidden">Last name</label>
+                <input type="text" x-model="lastname" class="form-control" id="staticEmail1" placeholder="lastname">
+              </div>
+              <div class="col-auto">
+                <label for="staticEmail1" class="visually-hidden">Username</label>
+                <input type="text" x-model="username" class="form-control" id="staticEmail1" placeholder="Username">
+              </div>
+              <div class="col-auto">
+                <label for="inputPassword1" class="visually-hidden">Password</label>
+                <input type="password" x-model="password" class="form-control" id="inputPassword1" placeholder="Password">
+              </div>
+             
+
+              <div class="col-auto">
+                <br>
+                <div class="d-flex justify-content-center">
+                  <button @click="register()" x-bind:disabled="!username || !password" type="submit"
+                    class="btn btn-primary mb-3">Register</button>
+                </div>
+                </div>
+                <h6 @click="hideLogin()" class="link-primary d-flex justify-content-center"><a>Already registed?Login here</a></h6>
+              <h2>Login</h2>
+          <div class="col-auto">
+            <label for="staticEmail2" class="visually-hidden">Username</label>
+            <input type="text" x-model="loginUsername" class="form-control" id="staticEmail2" placeholder="Username">
+          </div>
+          <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">Password</label>
+            <input type="password" x-model="loginPassword" class="form-control" id="inputPassword2"
+              placeholder="Password">
+          </div>
+        </form>
+        <div class="col-auto">
+          <br>
+          <div class="d-flex justify-content-center">
+            <button @click="login()" x-bind:disabled="!loginUsername || !loginPassword" type="submit"
+              class="btn btn-primary mb-3">Login</button>
+          </div>
+          
+        </div>
+      </div>
+      
+        </form>
+       
+         <a><h6 @click="hideRegister()" class="link-primary d-flex justify-content-center">Not yet registered?click here</h6></a>
+        </div>
+      </div>
+    
+  </div>
+</div-->
+
+
+
+
+  <div class="search">
+    <input type="text" placeholder="Search Movie...">
+    <button>Search</button>
+</div>
+<div class="movies-container favorites">
+    <h1>Movies</h1>
+    <div class="movies-grid">
+        <!--div class="card" data-id="123456">
+            <div class="img">
+                <img src="https://unsplash.it/500/1000" alt="">
+            </div>
+            <div class="info">
+                <h2>Movie Name</h2>
+                <div class="single-info">
+                    <span>Rate: </span>
+                    <span>10 / 10</span>
+                </div>
+                <div class="single-info">
+                    <span>Release Date: </span>
+                    <span>10-04-2022</span>
+                </div>
+            </div>
+        </div-->
+    </div>
+</div>
+
+<div class="movies-container trending">
+    <h1>Trending</h1>
+    <div class="movies-grid">
+        <div class="card" data-id="123456">
+            <div class="img">
+                <img src="https://unsplash.it/500/1000" alt="">
+            </div>
+            <div class="info">
+                <h2>Movie Name</h2>
+                <div class="single-info">
+                    <span>Rate: </span>
+                    <span>10 / 10</span>
+                </div>
+                <div class="single-info">
+                    <span>Release Date: </span>
+                    <span>10-04-2022</span>
+                </div>
+            </div>
+          </div> 
+    </div>
+</div>
+
+
+<div class="popup-container"></div>
+<!-- <span class="x-icon">&#10006;</span>
+<div class="content">
+    <div class="left">
+        <div class="poster-img">
+            <img src="https://unsplash.it/500/1000" alt="">
+        </div>
+        <div class="single-info">
+            <span>Add to favorites:</span>
+            <span class="heart-icon">&#9829;</span>
+        </div>
+    </div>
+    <div class="right">
+        <h1>Movie Title</h1>
+        <h3>Movie Tagline</h3>
+        <div class="single-info-container">
+            <div class="single-info">
+                <span>Language:</span>
+                <span>English</span>
+            </div>
+            <div class="single-info">
+                <span>Length:</span>
+                <span>120 minutes</span>
+            </div>
+            <div class="single-info">
+                <span>Rate:</span>
+                <span>10 / 10</span>
+            </div>
+            <div class="single-info">
+                <span>Budget:</span>
+                <span>1350000$</span>
+            </div>
+            <div class="single-info">
+                <span>Release Date:</span>
+                <span>05-07-2022</span>
+            </div>
+        </div>
+        <div class="genres">
+            <h2>Genres</h2>
+            <ul>
+                <li>Action</li>
+                <li>Drama</li>
+                <li>Romance</li>
+            </ul>
+        </div>
+        <div class="overview">
+            <h2>Overview</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere necessitatibus, quos molestiae fuga voluptatem totam odit voluptates ullam et distinctio?</p>
+        </div>
+        <div class="trailer">
+            <h2>Trailer</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Kmo8NLKkfcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div> -->
+<!--script src="app.js" defer></script>
+    
+    <script src="login.js" defer></script-->
+    
+  </body>
+</html>
