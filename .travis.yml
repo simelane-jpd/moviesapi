@@ -1,0 +1,14 @@
+language: node_js
+
+env:
+  - DATABASE_URL=postgres://postgres@localhost:5432/generator_app
+
+node_js:  
+  - 12
+
+before_script:
+  - psql -c 'create database generator_app;' -U postgres
+  - psql -U postgres -d generator_app -a -f ./sql/moviesapi.sql
+
+services:
+  - postgresql
